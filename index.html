@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+   
+
+    <!-- <link rel="stylesheet" type="text/css" href="jqueryui/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="jqueryui/jquery-ui.structue.css">
+    <link rel="stylesheet" type="text/css" href="jqueryui/jquery-ui.theme.css"> -->
+    <style>
+        body{
+            background-color:aquamarine;
+        }
+        fieldset{
+            float:left;
+            margin:50px 20px;
+            padding: 10px;
+            height: 350px;
+            width:210px;
+            border: 5px solid black;
+        }
+        ol{
+            list-style-type: none;
+            width:210px;
+            height:200px;
+        }
+
+        
+        li{
+            
+            font-weight: bolder;
+            font-size: large;
+            margin: 5px;
+            padding:5px;
+            border: 1px solid black;
+            width:90%;
+            color:#fff;
+        }
+        li:hover{
+            cursor: pointer;
+        }
+        #chelsea li{
+            background-color:blue;
+
+
+        
+        }
+        #manchester li{
+            background-color:red;
+        }
+        button{
+            background-color:green;
+            border: 1px solid black;
+            clear:both;
+            margin:10px 200px;
+            padding:5px;
+            width: 20%;
+            border-radius: 3px;
+            color:beige;
+            font-weight: bolder;
+        }
+        button:hover{
+            border:3px solid black;
+            cursor: pointer;
+
+        }
+        .container{
+            position: absolute;
+            left: 27%;
+        }
+        h1, h3{
+            text-align:center;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+        }
+        .leg{
+            font-size: 25px;
+            font-weight:bolder;
+        }
+        
+        
+    </style>
+    <title>Sorting Players</title>
+</head>
+<body>
+    <hr>
+    <h1>Sort the Players. Updown and Sideways.</h1>
+    <h3>hint: Arrange the order of Chelsea in alphabetical order</h3>
+    <hr>
+    <div class="container">
+    
+    <fieldset id="left">
+        <legend class="leg"><strong>Chelsea</strong></legend>
+        <ol id="chelsea">
+            <li id="pulisic">Christian Pulisic</li>
+            <li id="martial">Antony Martial</li>
+            <li id="hakim">Hakim Ziyech</li>
+            <li id="harry">Harry Maguire</li>
+            <li id="bruno">Bruno Fernandes</li>
+        </ol>
+    </fieldset>
+    <fieldset id="right">
+        <legend class="leg"><strong>Manchester United</strong></legend>
+        <ol id="manchester">
+            <li id=rashford>Rashford</li>
+            <li id= werner>Timo Werner</li>
+            <li id="juan">Juan Mata</li>
+            <li id="ngolo">Ngolo Kante</li>
+            <li id="chillwell">Ben Chillwell</li>
+
+        </ol>
+    </fieldset>
+
+    <button type="button" onclick= "doneSort()"> Done </button>
+    
+    
+</div>
+
+
+
+    <!-- <script src="jquery.js" type="text/javascript"></script>
+    <script src="jqueryui/jquery-ui.js" type="text/javascript"></script> -->
+    <script>
+        $("#chelsea").sortable({connectWith: "#manchester"});
+        $("#manchester").sortable({connectWith: "#chelsea"});
+        // var x = document.querySelectorAll("li")[0];
+        // alert(x.innerHTML);
+
+       
+        
+        function doneSort(){
+            $("#chelsea").sortable('disable');
+            $("#manchester").sortable('disable');
+            if(document.querySelectorAll("li")[0].innerHTML=="Ben Chillwell" && document.querySelectorAll("li")[1].innerHTML=="Christian Pulisic" && document.querySelectorAll("li")[2].innerHTML=="Hakim Ziyech" && document.querySelectorAll("li")[3].innerHTML=="Ngolo Kante" && document.querySelectorAll("li")[4].innerHTML=="Timo Werner" &&
+            document.querySelectorAll("#chelsea li").length == 5) 
+              {
+            $("h1").text("Congratulations! You Won");
+        }
+        else{
+            $("h1").text("You Lost, Refresh to retry")
+        }
+    }
+                       
+        
+        
+
+    </script>
+</body>
+</html>
